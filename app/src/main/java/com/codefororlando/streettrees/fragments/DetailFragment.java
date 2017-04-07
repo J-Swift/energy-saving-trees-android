@@ -3,6 +3,7 @@ package com.codefororlando.streettrees.fragments;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,6 +61,7 @@ public class DetailFragment extends Fragment {
 
     public interface DetailListener {
         TreeDescription getTreeData();
+        @DrawableRes int getTreeDrawable();
     }
 
 }

@@ -9,6 +9,7 @@ import com.codefororlando.streettrees.TreeApplication;
 import com.codefororlando.streettrees.api.models.TreeDescription;
 import com.codefororlando.streettrees.api.providers.TreeDescriptionProvider;
 import com.codefororlando.streettrees.fragments.DetailFragment;
+import com.codefororlando.streettrees.util.TreeDrawableResourceProvider;
 import com.google.android.gms.maps.model.LatLng;
 
 import javax.inject.Inject;
@@ -19,6 +20,9 @@ public class DetailActivity extends AppCompatActivity implements DetailFragment.
 
     @Inject
     TreeDescriptionProvider treeDescriptionProvider;
+    @Inject
+    TreeDrawableResourceProvider treeDrawableResourceProvider;
+
     private LatLng location;
     private String treeType;
 
@@ -44,6 +48,10 @@ public class DetailActivity extends AppCompatActivity implements DetailFragment.
     @Override
     public TreeDescription getTreeData() {
         return treeDescriptionProvider.getTreeDescription(treeType);
+    }
 
+    @Override
+    public int getTreeDrawable() {
+        return treeDrawableResourceProvider.getDrawable(treeType);
     }
 }
