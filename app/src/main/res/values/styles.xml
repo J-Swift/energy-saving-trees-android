@@ -56,4 +56,34 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:background">@color/orlandoGreen</item>
     </style>
+
+    <!-- NOTE(jpr): 'contentPaddingTop' is omitted from the style so that we can seamlessly toggle -->
+    <!-- visibility of the child views without -->
+    <style name="TreeDetailCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/default_gap</item>
+        <item name="contentPaddingBottom">@dimen/default_gap</item>
+        <item name="contentPaddingLeft">@dimen/default_gap</item>
+        <item name="contentPaddingRight">@dimen/default_gap</item>
+    </style>
+
+    <style name="TreeDetailInfoPairing">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/default_gap</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="TreeDetailInfoLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+    </style>
+
+    <style name="TreeDetailInfoValue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+    </style>
 </resources>

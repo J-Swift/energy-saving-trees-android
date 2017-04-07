@@ -12,4 +12,7 @@
     <color name="request_form_text_color">@android:color/white</color>
     <color name="primary_text">@android:color/white</color>
     <color name="secondary_text">@android:color/white</color>
+
+    <!-- Assign a name for easier grep-ability later on -->
+    <color name="placeholderColor">#FF0000</color>
 </resources>

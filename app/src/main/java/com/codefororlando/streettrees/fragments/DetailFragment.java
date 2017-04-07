@@ -7,6 +7,7 @@ import android.support.annotation.DrawableRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.codefororlando.streettrees.R;
@@ -46,17 +47,32 @@ public class DetailFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        TreeDescription treeDescription = activityListener.getTreeData();
 
-        ((TextView) layoutView.findViewById(R.id.treeHeight)).setText(treeDescription.getMinHeight());
-        ((TextView) layoutView.findViewById(R.id.treeLeaf)).setText(treeDescription.getLeaf());
-        ((TextView) layoutView.findViewById(R.id.treeShape)).setText(treeDescription.getShape());
-        ((TextView) layoutView.findViewById(R.id.treeWidth)).setText(treeDescription.getMinWidth());
-        ((TextView) layoutView.findViewById(R.id.treeSunlight)).setText(treeDescription.getSunlight());
-        ((TextView) layoutView.findViewById(R.id.treSoil)).setText(treeDescription.getSoil());
-        ((TextView) layoutView.findViewById(R.id.treeMoisture)).setText(treeDescription.getMoisture());
-        ((TextView) layoutView.findViewById(R.id.treeDescription)).setText(treeDescription.getDescription());
-        ((TextView) layoutView.findViewById(R.id.treeType)).setText(treeDescription.getName());
+        TreeDescription treeDescription = activityListener.getTreeData();
+        int resId = activityListener.getTreeDrawable();
+
+        ((ImageView)layoutView.findViewById(R.id.treeTypeIcon)).setImageResource(resId);
+        updateTextOrHideGroup(layoutView, R.id.treeTypeGroup, R.id.treeType, treeDescription.getName());
+        updateTextOrHideGroup(layoutView, R.id.treeDescription, R.id.treeDescription, treeDescription.getDescription());
+
+        updateTextOrHideGroup(layoutView, R.id.treeWidthGroup, R.id.treeWidth, String.format("%s - %s", treeDescription.getMinWidth(), treeDescription.getMaxWidth()));
+        updateTextOrHideGroup(layoutView, R.id.treeHeightGroup, R.id.treeHeight, String.format("%s - %s", treeDescription.getMinHeight(), treeDescription.getMaxHeight()));
+
+        updateTextOrHideGroup(layoutView, R.id.treeLeafGroup, R.id.treeLeaf, treeDescription.getLeaf());
+        updateTextOrHideGroup(layoutView, R.id.treeShapeGroup, R.id.treeShape, treeDescription.getShape());
+        updateTextOrHideGroup(layoutView, R.id.treeSunlightGroup, R.id.treeSunlight, treeDescription.getSunlight());
+        updateTextOrHideGroup(layoutView, R.id.treeSoilGroup, R.id.treeSoil, treeDescription.getSoil());
+        updateTextOrHideGroup(layoutView, R.id.treeMoistureGroup, R.id.treeMoisture, treeDescription.getMoisture());
+    }
+
+    // Avoid showing empty/null text by removing the offending views
+    private static void updateTextOrHideGroup(View parentView, int sectionId, int textNodeId, String updateText) {
+        if ( updateText == null || updateText.trim().isEmpty() ) {
+            parentView.findViewById(sectionId).setVisibility(View.GONE);
+            return;
+        }
+
+        ((TextView) parentView.findViewById(textNodeId)).setText(updateText.trim());
     }
 
     public interface DetailListener {

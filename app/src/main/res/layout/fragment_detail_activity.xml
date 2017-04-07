@@ -1,121 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1">
+    android:layout_height="match_parent">
 
-    <ImageView
+    <RelativeLayout
+        android:id="@+id/imageFrame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="200dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/mapImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/placeholderColor"
+            android:scaleType="centerCrop" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/directions"/>
+            android:layout_centerInParent="true"
+            android:text="PLACEHOLDER" />
+    </RelativeLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/walkButton"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/imageFrame"
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/driveButton"/>
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:weightSum="1">
 
+
+        <android.support.v7.widget.CardView
+            style="@style/TreeDetailCard"
+            cardview:contentPaddingTop="@dimen/default_gap">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/treeTypeIcon"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@color/placeholderColor" />
+
+                    <LinearLayout
+                        android:id="@+id/treeTypeGroup"
+                        style="@style/TreeDetailInfoPairing"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@id/treeTypeIcon">
+
+                        <TextView
+                            android:id="@+id/treeTypeLabel"
+                            style="@style/TreeDetailInfoLabel"
+                            android:text="@string/treeTypelabel" />
+
+                        <TextView
+                            android:id="@+id/treeType"
+                            style="@style/TreeDetailInfoValue"
+                            tools:text="Nuttall Oak" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/treeDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_gap"
+                    tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu convallis odio. Suspendisse ut gravida nibh, vel pulvinar purus. Ut non efficitur ex." />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <!-- TODO(jpr): reenable/redesign this section after comparing to iOS -->
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/default_gap">-->
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/directions" />-->
+
+        <!--<ImageView-->
+        <!--android:id="@+id/walkButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+        <!--<ImageView-->
+        <!--android:id="@+id/driveButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+        <!--</LinearLayout>-->
+
+
+        <android.support.v7.widget.CardView style="@style/TreeDetailCard">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/treeHeightGroup"
+                    style="@style/TreeDetailInfoPairing">
+
+                    <TextView
+                        android:id="@+id/treeHeightLabel"
+                        style="@style/TreeDetailInfoLabel"
+                        android:text="@string/heightlabel" />
+
+                    <TextView
+                        android:id="@+id/treeHeight"
+                        style="@style/TreeDetailInfoValue"
+                        tools:text="12.19" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/treeWidthGroup"
+                    style="@style/TreeDetailInfoPairing">
+
+                    <TextView
+                        android:id="@+id/treeWidthLabel"
+                        style="@style/TreeDetailInfoLabel"
+                        android:text="@string/widthlabel" />
+
+                    <TextView
+                        android:id="@+id/treeWidth"
+                        style="@style/TreeDetailInfoValue"
+                        tools:text="10.67" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView style="@style/TreeDetailCard">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/treeShapeGroup"
+                    style="@style/TreeDetailInfoPairing">
+
+                    <TextView
+                        android:id="@+id/treeShapeLabel"
+                        style="@style/TreeDetailInfoLabel"
+                        android:text="@string/shapelabel" />
+
+                    <TextView
+                        android:id="@+id/treeShape"
+                        style="@style/TreeDetailInfoValue"
+                        tools:text="Upright" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/treeLeafGroup"
+                    style="@style/TreeDetailInfoPairing">
+
+                    <TextView
+                        android:id="@+id/treeLeafLabel"
+                        style="@style/TreeDetailInfoLabel"
+                        android:text="@string/leaf_typelabel" />
+
+                    <TextView
+                        android:id="@+id/treeLeaf"
+                        style="@style/TreeDetailInfoValue"
+                        tools:text="Deciduous" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/treeSoilGroup"
+                    style="@style/TreeDetailInfoPairing">
+
+                    <TextView
+                        android:id="@+id/treeSoilLabel"
+                        style="@style/TreeDetailInfoLabel"
+                        android:text="@string/soillabel" />
+
+                    <TextView
+                        android:id="@+id/treeSoil"
+                        style="@style/TreeDetailInfoValue"
+                        tools:text="clay;sand;loam;acidic;extended flooding;well-drained" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/treeSunlightGroup"
+                    style="@style/TreeDetailInfoPairing">
+
+                    <TextView
+                        android:id="@+id/treeSunlightLabel"
+                        style="@style/TreeDetailInfoLabel"
+                        android:text="@string/sunlightlabel" />
+
+                    <TextView
+                        android:id="@+id/treeSunlight"
+                        style="@style/TreeDetailInfoValue"
+                        tools:text="1" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/treeMoistureGroup"
+                    style="@style/TreeDetailInfoPairing">
+
+                    <TextView
+                        android:id="@+id/treeMoistureLabel"
+                        style="@style/TreeDetailInfoLabel"
+                        android:text="@string/moisturelabel" />
+
+                    <TextView
+                        android:id="@+id/treeMoisture"
+                        style="@style/TreeDetailInfoValue"
+                        tools:text="Dry to Moist Soil" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tree Type"
-        android:id="@+id/treeType" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/treeDescription"/>
-    <TableLayout
-        android:shrinkColumns="*"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TableRow>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/heightlabel"/>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:id="@+id/treeHeight"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/widthlabel"/>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:id="@+id/treeWidth"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/shapelabel"/>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:id="@+id/treeShape"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/leaf_typelabel"/>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:id="@+id/treeLeaf"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/soillabel"/>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:id="@+id/treSoil"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/sunlightlabel"/>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:id="@+id/treeSunlight"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/moisturelabel"/>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:id="@+id/treeMoisture"/>
-        </TableRow>
-
-    </TableLayout>
-
-</LinearLayout>
+</RelativeLayout>
