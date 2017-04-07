@@ -1,12 +1,14 @@
 package com.codefororlando.streettrees.util;
 
 import android.support.annotation.DrawableRes;
+import android.util.Log;
 
 import com.codefororlando.streettrees.R;
 
 import javax.inject.Inject;
 
 public class TreeDrawableResourceProvider {
+    private static final String TAG = "TreeDrawableResourcePro";
 
     public
     @Inject
@@ -37,6 +39,7 @@ public class TreeDrawableResourceProvider {
                 return R.drawable.cfo_tulip_popular;
             case "Tabebuia Ipe":
             default:
+                Log.w(TAG, String.format("getDrawable: no drawable set for tree [%s]", treeName));
                 //TODO Use a question mark or no picture found image.
                 return R.drawable.cfo_yellow_trumpet;
         }
